@@ -16,7 +16,7 @@ class Combinations
 	}
 	
 	public function setElements($elements){
-		$this->_elements = $elements;
+		$this->_elements = array_values($elements);
 	}
 
 	public function getCombinations($length, $with_repetition = false){
@@ -64,14 +64,14 @@ class Combinations
 
 		foreach($this->_elements as $key => $value){
 
-		    if ($with_repetition == false){
-                if (in_array($key, $keys)){
-                    continue;
-                }
-            }
+			if ($with_repetition == false){
+				if (in_array($key, $keys)){
+					continue;
+				}
+			}
 
-            $keys[] = $key;
-            $elements[] = $value;
+			$keys[] = $key;
+			$elements[] = $value;
 			
 			if (count($elements) == $length){
 				yield $elements;
